@@ -20,10 +20,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
 fi
 
 # Don't actually build dartpy because the build time exceeds Travis CI time limit.
-if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-  lscpu
-fi
-make -j
+make -j4
 $SUDO make install
 
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
