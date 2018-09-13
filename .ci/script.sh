@@ -11,6 +11,14 @@ if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$TRAVIS_BRANCH" != "*-binding" ]; then
   make binding
 fi
 
+# For test
+if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+  cmake .. -DDARTPY_PYTHON_VERSION=$PYTHON_VERSION
+  if [ "$TRAVIS_BRANCH" != "*-binding" ]; then
+    make binding
+  fi
+fi
+
 # Don't actually build dartpy because the build time exceeds Travis CI time limit.
 make -j4
 $SUDO make install
